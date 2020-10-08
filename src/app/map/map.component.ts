@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
 
+  zoom = 4;
+  center: google.maps.LatLngLiteral;
+
   constructor() { }
 
   ngOnInit(): void {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+    });
   }
 
+  onChoseLocation(event) {
+    console.log(event);
+  }
 }
