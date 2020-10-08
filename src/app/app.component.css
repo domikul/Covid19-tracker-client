@@ -1,0 +1,11 @@
+
+#toolbar{
+  position: absolute;
+  background-color: transparent;
+}
+
+#title{
+  font-size: 31pt;
+  font-family: 'Sen', sans-serif;
+  color: rgb(20, 75, 141);
+}
