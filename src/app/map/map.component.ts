@@ -11,9 +11,10 @@ export class MapComponent implements OnInit {
   center: google.maps.LatLngLiteral;
   markerLat: number;
   markerLng: number;
+  geocoder = new google.maps.Geocoder();
   markers: Array<any> = new Array<any>();
 
-  constructor() { }
+  constructor() {   }
 
   ngOnInit(): void {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -29,6 +30,26 @@ export class MapComponent implements OnInit {
     this.markers.push({
       position: event.latLng
     });
+    const latlng = event.latLng;
+    this.geocoder.geocode(
+      { location: latlng },
+      (
+        results: google.maps.GeocoderResult[],
+        status: google.maps.GeocoderStatus
+      ) => {
+        if (status === 'OK') {
+          if (results[0]) {
+            console.log(results[0].formatted_address);
+          } else {
+            window.alert('No results found');
+          }
+        } else {
+          window.alert('Geocoder failed due to: ' + status);
+        }
+      }
+    );
+
+
   }
 
 
