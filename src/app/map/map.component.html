@@ -4,9 +4,10 @@
   [zoom]="zoom"
   [center]="center"
   (mapClick)="onChoseLocation($event)">
-  <map-marker
-    *ngFor="let marker of markers"
-    [position]="marker.position"
-    [label]="marker.label"></map-marker>
+    <map-marker
+      *ngFor="let marker of markers"
+      [position]="marker.position">
+    </map-marker>
 </google-map>
 
+<app-map-stats [receivedStats]="statsToSend"></app-map-stats>

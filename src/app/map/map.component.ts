@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import {CountryStats} from '../_models/country-stats';
+import {CovidCasesService} from '../_services/covid-cases.service';
+import {CountryInterpreter} from '../_helpers/country-interpreter';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -9,12 +13,16 @@ export class MapComponent implements OnInit {
 
   zoom = 4;
   center: google.maps.LatLngLiteral;
-  markerLat: number;
-  markerLng: number;
   geocoder = new google.maps.Geocoder();
   markers: Array<any> = new Array<any>();
 
-  constructor() {   }
+  countryNamePl: string;
+  countryStats = new CountryStats();
+  mapWithNames = this.countryInterpreter.getCountryNamesMap();
+  statsToSend = new Subject<CountryStats>();
+
+
+  constructor(private covidCasesService: CovidCasesService, private countryInterpreter: CountryInterpreter) {   }
 
   ngOnInit(): void {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -26,11 +34,11 @@ export class MapComponent implements OnInit {
   }
 
   onChoseLocation(event: google.maps.MouseEvent): void {
-    console.log(event.latLng.toString());
-    this.markers.push({
-      position: event.latLng
-    });
+    this.markers.length = 0;
     const latlng = event.latLng;
+    this.markers.push({
+      position: latlng
+    });
     this.geocoder.geocode(
       { location: latlng },
       (
@@ -39,7 +47,18 @@ export class MapComponent implements OnInit {
       ) => {
         if (status === 'OK') {
           if (results[0]) {
-            console.log(results[0].formatted_address);
+            const geocodedAdress = results[0].formatted_address.toString();
+            for (const key of this.mapWithNames.keys()){
+              if (geocodedAdress.includes(key)){
+                this.countryNamePl = key;
+                break;
+              }
+            }
+            this.covidCasesService.getLatestDataByCountry(this.mapWithNames.get(this.countryNamePl)).subscribe(x => {
+              this.countryStats = x;
+              this.countryStats.countryPl = this.countryNamePl;
+              this.statsToSend.next(this.countryStats);
+            });
           } else {
             window.alert('No results found');
           }
@@ -48,10 +67,5 @@ export class MapComponent implements OnInit {
         }
       }
     );
-
-
   }
-
-
-
 }

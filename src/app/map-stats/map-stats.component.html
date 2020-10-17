@@ -1,0 +1,6 @@
+<div *ngIf="(receivedStats | async) as stats" >
+  <div> {{stats.countryPl}}</div>
+  <div> {{stats.confirmedCases}}</div>
+  <div> {{stats.deathsCases}}</div>
+  <div> {{stats.recoveredCases}}</div>
+</div>
