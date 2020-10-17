@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
-import {CountryStats} from '../_models/country-stats';
+import {CountryStats} from '../../_models/country-stats';
 import {Observable, Subject, Subscription} from 'rxjs';
 
 @Component({

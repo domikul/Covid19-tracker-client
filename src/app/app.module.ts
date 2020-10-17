@@ -10,13 +10,21 @@ import {FlexModule} from '@angular/flex-layout';
 import {GoogleMapsModule} from '@angular/google-maps';
 import {MapComponent} from './map/map.component';
 import {CountryInterpreter} from './_helpers/country-interpreter';
-import { MapStatsComponent } from './map-stats/map-stats.component';
+import { MapStatsComponent } from './map/map-stats/map-stats.component';
+import { TableComponent } from './table/table.component';
+import { ChartComponent } from './chart/chart.component';
+
+import {RouterModule} from '@angular/router';
+import { SourceComponent } from './source/source.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
-    MapStatsComponent
+    MapStatsComponent,
+    TableComponent,
+    ChartComponent,
+    SourceComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +34,13 @@ import { MapStatsComponent } from './map-stats/map-stats.component';
     MatButtonModule,
     MatToolbarModule,
     FlexModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    RouterModule.forRoot([
+      { path: '', component: MapComponent},
+      { path: 'table', component: TableComponent},
+      { path: 'chart', component: ChartComponent},
+      { path: 'source', component: SourceComponent}
+    ])
   ],
   providers: [CountryInterpreter],
   bootstrap: [AppComponent]
