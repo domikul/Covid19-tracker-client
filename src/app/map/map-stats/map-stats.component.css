@@ -1,0 +1,45 @@
+.dataContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2%;
+  font-family: 'Sen', sans-serif;
+  color: rgb(20, 75, 141);
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: flex-start;
+  margin-right: 8%;
+}
+
+p{
+  margin-top: 10px;
+  font-size: 12pt;
+  text-align: center;
+}
+
+mat-icon{
+  font-size: 40pt !important;
+  margin-right: 3px !important;
+  margin-top: 20px;
+}
+
+#country {
+  font-size: 40pt;
+  white-space: normal !important;
+  max-width: 40%;
+  line-height: 50px;
+  margin-right: 5% !important;
+  text-align: center;
+}
+
+.data {
+  font-size: 22pt;
+  text-align: center;
+}
+

@@ -1,5 +1,5 @@
 <google-map
-  height="500px"
+  height="63%"
   width="100%"
   [zoom]="zoom"
   [center]="center"
@@ -10,8 +10,10 @@
     </map-marker>
 </google-map>
 
-<button routerLink="/table">1</button>
-<button routerLink="/chart">2</button>
-<button routerLink="/source">3</button>
+<div class="buttonContainer">
+  <button mat-button routerLink="/table" class="lightButton">Tabele</button>
+  <button mat-button routerLink="/chart" class="darkButton">Wykresy</button>
+  <button mat-button routerLink="/source" class="lightButton">Źródła</button>
+</div>
 
 <app-map-stats [receivedStats]="statsToSend"></app-map-stats>
