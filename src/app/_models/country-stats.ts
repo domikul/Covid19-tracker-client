@@ -1,10 +1,9 @@
 export class CountryStats {
-  country: string;
-  // tslint:disable-next-line:variable-name
+  private _country: string;
   private _countryPl: string;
-  confirmedCases: number;
-  recoveredCases: number;
-  deathsCases: number;
+  private _confirmedCases: number;
+  private _recoveredCases: number;
+  private _deathsCases: number;
 
 
   set countryPl(value: string) {
@@ -13,5 +12,21 @@ export class CountryStats {
 
   get countryPl(): string {
     return this._countryPl;
+  }
+
+  get country(): string {
+    return this._country;
+  }
+
+  get confirmedCases(): number {
+    return this._confirmedCases;
+  }
+
+  get recoveredCases(): number {
+    return this._recoveredCases;
+  }
+
+  get deathsCases(): number {
+    return this._deathsCases;
   }
 }

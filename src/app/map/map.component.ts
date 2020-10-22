@@ -18,7 +18,7 @@ export class MapComponent implements OnInit {
 
   countryNamePl: string;
   countryStats = new CountryStats();
-  mapWithNames = this.countryInterpreter.getCountryNamesMap();
+  mapWithNames = this.countryInterpreter.countryNamesMapPlEn;
   statsToSend = new Subject<CountryStats>();
 
 
