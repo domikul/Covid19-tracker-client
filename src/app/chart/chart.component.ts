@@ -3,7 +3,6 @@ import { Chart } from 'chart.js';
 import { CountryInterpreter } from '../_helpers/country-interpreter';
 import {ChartDataService} from '../_services/chart-data.service';
 import {DatePipe} from '@angular/common';
-import {ChartStats} from '../_models/chart-stats';
 import {CheckboxList} from '../_models/checkbox-list';
 
 @Component({
@@ -90,9 +89,7 @@ export class ChartComponent implements OnInit {
     } else {
       this.selectedCountries = this.selectedCountries.filter(m => m !== val);
     }
-    console.log(this.selectedCountries);
   }
-
 
   onConfirmedToggleChange(event): void {
     this.confirmedToggle = !!event.checked;
@@ -108,7 +105,6 @@ export class ChartComponent implements OnInit {
 
   generateChart(): void {
     this.deleteAllDatasets();
-    let index = 0;
     for (let i = 0 ; i < (this.selectedCountries.length); i++){
       if (this.confirmedToggle){
         this.chartDataService.getChartDataByCountryInTimeRange(this.mapWithCountryNamesPlEn.get(this.selectedCountries[i]), 'confirmed', this.startDateForm, this.endDateForm). subscribe( x => {
@@ -128,7 +124,6 @@ export class ChartComponent implements OnInit {
           this.colorIndex++;
         });
       }
-      console.log('i', index);
     }
     this.checkUncheckAll();
   }
@@ -149,7 +144,6 @@ export class ChartComponent implements OnInit {
     }
     this.getCheckedItemList();
     this.selectedCountries.length = 0;
-    console.log(this.selectedCountries);
   }
 
   addDataToChart(backgrColor: string, borColor: string, axisLabels: string[], dataPoints: number[], labelName: string ): void {
@@ -228,6 +222,21 @@ export class ChartComponent implements OnInit {
       this.colorIndex = 0;
     }
 
-   return borderColorList[index];
+  return borderColorList[index];
   }
+
+  checkboxValidation(): boolean{
+    if ( this.selectedCountries.length !== 0)
+      return true;
+    else
+      return false;
+  }
+
+  togglesValidation(): boolean{
+    if (this.confirmedToggle === true || this.recoveredToggle === true || this.deathsToggle === true)
+      return true;
+    else
+      return false;
+  }
+
 }

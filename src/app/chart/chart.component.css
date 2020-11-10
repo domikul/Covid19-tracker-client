@@ -1,12 +1,12 @@
 .row {
   display: flex;
-
   flex-direction: row;
 
 }
 
 .column {
   flex: 50%;
+  align-self: center;
 }
 
 ::-webkit-scrollbar {
@@ -33,8 +33,8 @@ mat-card-content{
 mat-card {
   width: 350px;
   padding: 1%;
-  margin-left: 4%;
-  margin-top: 2%;
+  margin-top: 6%;
+  margin-left: 15%;
 }
 
 
@@ -45,15 +45,15 @@ mat-card {
 
 
 p {
-  margin-left: 9%;
-  margin-top: 2%;
+  margin-left: 25%;
+  margin-top: 4%;
   font-size: 14pt;
   font-family: 'Sen', sans-serif;
   color: rgb(20, 75, 141);
 }
 
 .datepicker{
-  margin-left: 4%;
+  margin-left: 10%;
 }
 
 .slideToggleContainer{
@@ -62,11 +62,26 @@ p {
   font-size: 14pt;
   font-family: 'Sen', sans-serif;
   color: rgb(20, 75, 141);
-  margin-left: 10%;
+  margin-left: 30%;
   margin-top: 1%;
 }
 
 #canvas{
   width: 400px;
   height: 400px;
+  margin-top: 50px;
+  margin-right: 50px;
+
 }
+
+#generateButton {
+  background-color: rgb(120, 144, 156);
+  color: whitesmoke;
+  font-family: 'Sen', sans-serif;
+  font-size: 12pt;
+  margin-left: 30%;
+  margin-top: 3%;
+}
+
+
+
