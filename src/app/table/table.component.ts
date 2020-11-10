@@ -34,7 +34,6 @@ export class TableComponent implements OnInit {
       this.tab.sort((a, b) => (a.countryPl > b.countryPl) ? 1 : ((b.countryPl > a.countryPl) ? -1 : 0));
       this.dataTable.data = this.tab;
     });
-
     this.startDateForm = new DatePipe('en-US').transform('2020-01-22', 'yyyy-MM-dd');
     this.endDateForm = new DatePipe('en-US').transform(this.yesterday, 'yyyy-MM-dd');
   }

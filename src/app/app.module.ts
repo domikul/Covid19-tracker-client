@@ -20,11 +20,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
-import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule, MatPseudoCheckboxModule} from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
 import {HttpErrorInterceptor} from './_helpers/error-interceptor';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSlideToggle, MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -59,7 +63,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatListModule,
+    FormsModule,
+    MatPaginatorModule,
+    MatSlideToggleModule
   ],
   providers: [CountryInterpreter,
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },

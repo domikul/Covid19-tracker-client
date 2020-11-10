@@ -1,1 +1,61 @@
-<p>chart works!</p>
+<div class="row">
+
+  <div class="column">
+    <div>
+      <mat-card>
+        <mat-card-content >
+
+            <mat-list-item *ngFor="let item of checkList" id="listOfItems">
+              <mat-checkbox
+                [(ngModel)]="item.selected"
+                (change)="onCheckboxChange($event, item.name)"
+                color="primary">
+                  {{ item.name }}
+              </mat-checkbox>
+            </mat-list-item>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div>
+      <p>Wybierz przedział czasowy</p>
+
+        <mat-form-field  class="datepicker" [hideRequiredMarker]="true">
+          <mat-label>Od</mat-label>
+          <input type="date" matInput
+                 name="startDate"
+                 min="2020-01-22"
+                 max="{{yesterday | date:'yyyy-MM-dd'}}"
+                 [(ngModel)]="startDateForm" required>
+        </mat-form-field>
+
+        <mat-form-field class="datepicker" [hideRequiredMarker]="true">
+          <mat-label>Do</mat-label>
+          <input type="date" matInput
+                 name="endDate"
+                 min="2020-01-22"
+                 max="{{yesterday | date:'yyyy-MM-dd'}}"
+                 [(ngModel)]="endDateForm" required>
+        </mat-form-field>
+    </div>
+
+    <div class="slideToggleContainer">
+      <mat-slide-toggle (change)="onConfirmedToggleChange($event)" color="primary" class="slideToggle">Zachorowania</mat-slide-toggle>
+      <mat-slide-toggle (change)="onRecoveredToggleChange($event)"color="primary" class="slideToggle">Ozdrowienia</mat-slide-toggle>
+      <mat-slide-toggle (change)="onDeathsToggleChange($event)" color="primary" class="slideToggle">Zgony</mat-slide-toggle>
+    </div>
+
+    <button mat-button (click)="generateChart()"> Generuj wykres </button>
+
+  </div>
+
+
+  <div class="column">
+    <canvas id="canvas"> {{ chart }}</canvas>
+
+    <button mat-button (click)="updateScaleLogarythmic()"> Skala logarytmiczna </button>
+    <button mat-button (click)="updateScaleLinear()"> Skala liniowa </button>
+  </div>
+
+</div>

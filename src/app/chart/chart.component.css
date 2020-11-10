@@ -1,0 +1,72 @@
+.row {
+  display: flex;
+
+  flex-direction: row;
+
+}
+
+.column {
+  flex: 50%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+mat-card-content{
+  overflow: auto;
+  height: 235px;
+}
+
+mat-card {
+  width: 350px;
+  padding: 1%;
+  margin-left: 4%;
+  margin-top: 2%;
+}
+
+
+#listOfItems{
+  font-size: 13pt;
+  font-family: 'Sen', sans-serif !important;
+}
+
+
+p {
+  margin-left: 9%;
+  margin-top: 2%;
+  font-size: 14pt;
+  font-family: 'Sen', sans-serif;
+  color: rgb(20, 75, 141);
+}
+
+.datepicker{
+  margin-left: 4%;
+}
+
+.slideToggleContainer{
+  display: flex;
+  flex-direction: column;
+  font-size: 14pt;
+  font-family: 'Sen', sans-serif;
+  color: rgb(20, 75, 141);
+  margin-left: 10%;
+  margin-top: 1%;
+}
+
+#canvas{
+  width: 400px;
+  height: 400px;
+}
