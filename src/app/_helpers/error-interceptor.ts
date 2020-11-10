@@ -16,15 +16,15 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         catchError((error: HttpErrorResponse) => {
           let errorMsg = '';
           if (error.error instanceof ErrorEvent) {
-            errorMsg = `Error: ${error.message}`;
+            errorMsg = `Error: ${error.error}`;
           }
           else {
             if(error.status !== 500)
-              this.snackBar.open(error.message, 'OK', {duration: 5000, panelClass: 'error-snackbar'});
+              this.snackBar.open(error.error, 'OK', {duration: 5000, panelClass: 'error-snackbar'});
             else
-              this.snackBar.open('Server Error', 'OK', {duration: 5000, panelClass: 'error-snackbar'});
+              this.snackBar.open('Błąd po stronie serwera', 'OK', {duration: 5000, panelClass: 'error-snackbar'});
 
-            errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+            errorMsg = `Error Code: ${error.status},  Message: ${error.error}`;
           }
 
           return throwError(errorMsg);
