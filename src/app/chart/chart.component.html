@@ -54,8 +54,8 @@
   <div class="column">
     <canvas id="canvas"> {{ chart }}</canvas>
 
-    <button mat-button (click)="updateScaleLogarythmic()"> Skala logarytmiczna </button>
-    <button mat-button (click)="updateScaleLinear()"> Skala liniowa </button>
+    <button mat-button class="scaleButton" id="logScale" (click)="updateScaleLogarythmic()"> Skala logarytmiczna </button>
+    <button mat-button  class="scaleButton" (click)="updateScaleLinear()"> Skala liniowa </button>
   </div>
 
 </div>

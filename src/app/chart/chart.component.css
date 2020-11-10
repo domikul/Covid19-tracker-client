@@ -83,5 +83,10 @@ p {
   margin-top: 3%;
 }
 
+.scaleButton{
+  float: right;
+}
 
-
+#logScale {
+  margin-right: 3%;
+}
