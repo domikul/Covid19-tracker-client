@@ -20,6 +20,10 @@ export class CovidCasesService {
     return this.http.get<CountryStats[]>(`${environment.apiUrl}/total/world`);
   }
 
+  getTotalGlobalCases(): Observable<CountryStats> {
+    return this.http.get<CountryStats>(`${environment.apiUrl}/total/global`);
+  }
+
   getTotalWorldCasesInTimeRange(startDate: string, endDate: string): Observable<CountryStats[]> {
     return this.http.get<CountryStats[]>(`${environment.apiUrl}/partial/world?from=` + startDate + '&to=' + endDate);
   }

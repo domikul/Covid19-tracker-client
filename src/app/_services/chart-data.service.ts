@@ -15,4 +15,9 @@ export class ChartDataService {
   getChartDataByCountryInTimeRange(country: string, caseStatus: string, startDate: string, endDate: string): Observable<ChartStats> {
     return this.http.get<ChartStats>(`${environment.apiUrl}/chart/` + country + '/' + caseStatus + '?from='  + startDate + '&to=' + endDate);
   }
+
+  getGlobalChartDataInTimeRange(caseStatus: string, startDate: string, endDate: string): Observable<ChartStats> {
+    return this.http.get<ChartStats>(`${environment.apiUrl}/chart/global/` + caseStatus + '?from='  + startDate + '&to=' + endDate);
+  }
+
 }

@@ -43,33 +43,21 @@ export class ChartComponent implements OnInit {
     this.startDateForm = new DatePipe('en-US').transform('2020-01-22', 'yyyy-MM-dd');
     this.endDateForm = new DatePipe('en-US').transform(this.yesterday, 'yyyy-MM-dd');
 
+    this.chartDataService.getGlobalChartDataInTimeRange('confirmed', this.startDateForm, this.endDateForm).subscribe( x => {
+      this.addDataToChart( 'rgba(20, 75, 141, 0.2)',  'rgba(20, 75, 141, 1)' , Object.keys(x.casesMap), Object.values(x.casesMap),  'Świat - Zachorowania');
+      this.colorIndex++;
+    });
+    this.chartDataService.getGlobalChartDataInTimeRange('recovered', this.startDateForm, this.endDateForm).subscribe( x => {
+      this.addDataToChart( 'rgba(142, 180, 76, 0.2)',  'rgba(142, 180, 76, 1)' , Object.keys(x.casesMap), Object.values(x.casesMap),  'Świat - Ozdrowienia');
+      this.colorIndex++;
+    });
+    this.chartDataService.getGlobalChartDataInTimeRange('deaths', this.startDateForm, this.endDateForm).subscribe( x => {
+      this.addDataToChart( 'rgba(155, 10, 6, 0.2)',  'rgba(155, 10, 6, 1)' , Object.keys(x.casesMap), Object.values(x.casesMap),  'Świat - Zgony');
+      this.colorIndex++;
+    });
+
     this.chart = new Chart('canvas', {
       type: 'line',
-      data: {
-        labels: this.chartLabels,
-        datasets: [{
-          label: this.chartLabel,
-          data: this.chartData,
-          fill: false,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)',
-          ],
-          borderWidth: 1
-        }]
-      },
       options: {
         scales: {
           yAxes: [{

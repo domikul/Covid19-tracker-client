@@ -38,6 +38,15 @@ mat-icon{
   text-align: center;
 }
 
+#global {
+  font-size: 40pt;
+  white-space: normal !important;
+  max-width: 40%;
+  line-height: 50px;
+  margin-right: 5% !important;
+  text-align: center;
+}
+
 .data {
   font-size: 22pt;
   text-align: center;
