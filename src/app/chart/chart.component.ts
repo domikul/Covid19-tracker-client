@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { Chart } from 'chart.js';
 import { CountryInterpreter } from '../_helpers/country-interpreter';
 import {ChartDataService} from '../_services/chart-data.service';
@@ -43,15 +43,15 @@ export class ChartComponent implements OnInit {
     this.startDateForm = new DatePipe('en-US').transform('2020-01-22', 'yyyy-MM-dd');
     this.endDateForm = new DatePipe('en-US').transform(this.yesterday, 'yyyy-MM-dd');
 
-    this.chartDataService.getGlobalChartDataInTimeRange('confirmed', this.startDateForm, this.endDateForm).subscribe( x => {
+    this.chartDataService.getGlobalChartDataInAllTime('confirmed').subscribe(x => {
       this.addDataToChart( 'rgba(20, 75, 141, 0.2)',  'rgba(20, 75, 141, 1)' , Object.keys(x.casesMap), Object.values(x.casesMap),  'Świat - Zachorowania');
       this.colorIndex++;
     });
-    this.chartDataService.getGlobalChartDataInTimeRange('recovered', this.startDateForm, this.endDateForm).subscribe( x => {
+    this.chartDataService.getGlobalChartDataInAllTime('recovered').subscribe(x => {
       this.addDataToChart( 'rgba(142, 180, 76, 0.2)',  'rgba(142, 180, 76, 1)' , Object.keys(x.casesMap), Object.values(x.casesMap),  'Świat - Ozdrowienia');
       this.colorIndex++;
     });
-    this.chartDataService.getGlobalChartDataInTimeRange('deaths', this.startDateForm, this.endDateForm).subscribe( x => {
+    this.chartDataService.getGlobalChartDataInAllTime('deaths').subscribe(x => {
       this.addDataToChart( 'rgba(155, 10, 6, 0.2)',  'rgba(155, 10, 6, 1)' , Object.keys(x.casesMap), Object.values(x.casesMap),  'Świat - Zgony');
       this.colorIndex++;
     });

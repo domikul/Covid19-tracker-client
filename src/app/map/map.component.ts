@@ -48,11 +48,16 @@ export class MapComponent implements OnInit {
         if (status === 'OK') {
           if (results[0]) {
             const geocodedAdress = results[0].formatted_address.toString();
+            let isKey = false;
             for (const key of this.mapWithNames.keys()){
               if (geocodedAdress.includes(key)){
+                isKey = true;
                 this.countryNamePl = key;
                 break;
               }
+            }
+            if (isKey === false){
+              window.alert('Brak danych dla tego obszaru');
             }
             this.covidCasesService.getLatestDataByCountry(this.mapWithNames.get(this.countryNamePl)).subscribe(x => {
               this.countryStats = x;
@@ -60,10 +65,10 @@ export class MapComponent implements OnInit {
               this.statsToSend.next(this.countryStats);
             });
           } else {
-            window.alert('No results found');
+            window.alert('Brak danych dla tego obszaru');
           }
         } else {
-          window.alert('Geocoder failed due to: ' + status);
+          window.alert('Brak danych dla tego obszaru');
         }
       }
     );
