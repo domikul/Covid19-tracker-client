@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { Chart } from 'chart.js';
+import 'chartjs-plugin-zoom';
 import { CountryInterpreter } from '../_helpers/country-interpreter';
 import {ChartDataService} from '../_services/chart-data.service';
 import {DatePipe} from '@angular/common';
@@ -65,7 +66,16 @@ export class ChartComponent implements OnInit {
               beginAtZero: true
             }
           }]
-        }
+        },
+        pan: {
+          enabled: true,
+          mode: 'x',
+        },
+        zoom: {
+          enabled: true,
+          mode: 'x',
+        },
+        responsive: true
       }
     });
 

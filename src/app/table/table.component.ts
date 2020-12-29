@@ -28,8 +28,10 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
     this.covidCasesService.getTotalWorldCases().subscribe(x => {
       for (const val of x){
-        val.countryPl = this.mapWithNames.get(val.country);
-        this.tab.push(val);
+        if (this.mapWithNames.has(val.country)){
+          val.countryPl = this.mapWithNames.get(val.country);
+          this.tab.push(val);
+        }
       }
       this.tab.sort((a, b) => (a.countryPl > b.countryPl) ? 1 : ((b.countryPl > a.countryPl) ? -1 : 0));
       this.dataTable.data = this.tab;
@@ -42,8 +44,10 @@ export class TableComponent implements OnInit {
     this.tab.length = 0;
     this.covidCasesService.getTotalWorldCasesInTimeRange(this.startDateForm, this.endDateForm).subscribe(x => {
       for (const val of x){
-        val.countryPl = this.mapWithNames.get(val.country);
-        this.tab.push(val);
+        if (this.mapWithNames.has(val.country)) {
+          val.countryPl = this.mapWithNames.get(val.country);
+          this.tab.push(val);
+        }
       }
       this.tab.sort((a, b) => (a.countryPl > b.countryPl) ? 1 : ((b.countryPl > a.countryPl) ? -1 : 0));
       this.dataTable.data = this.tab;
