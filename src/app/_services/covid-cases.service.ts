@@ -17,7 +17,7 @@ export class CovidCasesService {
   }
 
   getTotalWorldCases(): Observable<CountryStats[]> {
-    return this.http.get<CountryStats[]>(`${environment.apiUrl}/total/world`);
+    return this.http.get<CountryStats[]>(`${environment.apiUrl}/total/all`);
   }
 
   getTotalGlobalCases(): Observable<CountryStats> {
@@ -25,7 +25,7 @@ export class CovidCasesService {
   }
 
   getTotalWorldCasesInTimeRange(startDate: string, endDate: string): Observable<CountryStats[]> {
-    return this.http.get<CountryStats[]>(`${environment.apiUrl}/partial/world?from=` + startDate + '&to=' + endDate);
+    return this.http.get<CountryStats[]>(`${environment.apiUrl}/partial/all?from=` + startDate + '&to=' + endDate);
   }
 
 }

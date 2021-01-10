@@ -17,7 +17,7 @@ export class ChartDataService {
   }
 
   getGlobalChartDataInAllTime(caseStatus: string): Observable<ChartStats> {
-    return this.http.get<ChartStats>(`${environment.apiUrl}/chart/global/all/` + caseStatus);
+    return this.http.get<ChartStats>(`${environment.apiUrl}/chart/total/global/` + caseStatus);
   }
 
 }
