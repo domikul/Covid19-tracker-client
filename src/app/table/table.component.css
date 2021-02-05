@@ -1,0 +1,60 @@
+table {
+  width: 100%;
+  background-color: transparent;
+}
+
+.header {
+
+  font-size: 16pt;
+  font-family: 'Sen', sans-serif;
+  color: white;
+  background-color: rgb(20, 75, 141);
+  text-align: center;
+}
+
+.cell{
+  font-size: 20pt;
+  font-family: 'Sen', sans-serif;
+  color: rgb(20, 75, 141);
+  text-align: right;
+  min-width:auto;
+  padding-right: 10% !important;
+}
+
+.countryCell{
+  font-size: 18.5pt;
+  font-family: 'Sen', sans-serif;
+  color: rgb(20, 75, 141);
+  text-align: left;
+  min-width:auto;
+  padding-left: 10% !important;
+}
+
+#inputPanel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 16pt;
+  font-family: 'Sen', sans-serif;
+  color: rgb(20, 75, 141);
+}
+
+.datepicker{
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+
+button {
+  width: 135px;
+  height: 35px;
+  background-color: rgb(224, 224, 224);
+  color: rgb(120, 144, 156);
+
+}

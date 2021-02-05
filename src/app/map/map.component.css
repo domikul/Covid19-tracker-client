@@ -1,0 +1,25 @@
+.buttonContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  width: 185px;
+  height: 35px;
+  margin-top: 10px;
+  font-size: 16pt;
+  font-weight: normal;
+}
+
+.lightButton {
+  background-color: rgb(224, 224, 224);
+  color: rgb(120, 144, 156);
+}
+
+.darkButton {
+  background-color: rgb(120, 144, 156);
+  color: rgb(224, 224, 224);
+}
+

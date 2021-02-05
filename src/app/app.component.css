@@ -1,0 +1,19 @@
+mat-toolbar{
+  position: sticky;
+  background-color: transparent;
+  height: 8% !important;
+}
+
+p{
+  margin-top: 5px;
+  font-size: 30pt;
+  font-family: 'Sen', sans-serif;
+  color: rgb(20, 75, 141);
+}
+
+img{
+  width:25%;
+  height:100%;
+  min-width: 300px;
+  max-width: 300px;
+}

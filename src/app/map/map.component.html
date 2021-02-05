@@ -1,0 +1,19 @@
+<google-map
+  height="63%"
+  width="100%"
+  [zoom]="zoom"
+  [center]="center"
+  (mapClick)="onChoseLocation($event)">
+    <map-marker
+      *ngFor="let marker of markers"
+      [position]="marker.position">
+    </map-marker>
+</google-map>
+
+<div class="buttonContainer">
+  <button mat-button routerLink="/table" class="lightButton">Tabele</button>
+  <button mat-button routerLink="/chart" class="darkButton">Wykresy</button>
+  <button mat-button routerLink="/source" class="lightButton">Źródła</button>
+</div>
+
+<app-map-stats [receivedStats]="statsToSend"></app-map-stats>

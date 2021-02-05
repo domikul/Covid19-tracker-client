@@ -1,0 +1,34 @@
+<div *ngIf="(receivedStats | async) as stats; else globalData" class="dataContainer">
+  <mat-icon [inline]="true" class="column" id="pinIcon">place</mat-icon>
+    <span id="country" class="column"> {{stats.countryPl}} </span>
+  <div class="column">
+    <div class="data"> {{stats.confirmedCases}}  </div>
+    <p>Potwierdzone <br> przypadki</p>
+  </div>
+  <div class="column">
+    <div class="data">  {{stats.deathsCases}}  </div>
+    <p>Zgony</p>
+  </div>
+  <div class="column">
+    <div class="data">  {{stats.recoveredCases}} </div>
+    <p>Ozdrowienia</p>
+  </div>
+</div>
+<ng-template #globalData>
+  <div class="dataContainer">
+    <mat-icon [inline]="true" class="column" id="pinIcon">place</mat-icon>
+    <span id="global" class="column"> Świat </span>
+    <div class="column">
+      <div class="data"> {{countryStat.confirmedCases}}  </div>
+      <p>Potwierdzone <br> przypadki</p>
+    </div>
+    <div class="column">
+      <div class="data">  {{countryStat.deathsCases}}  </div>
+      <p>Zgony</p>
+    </div>
+    <div class="column">
+      <div class="data">  {{countryStat.recoveredCases}} </div>
+      <p>Ozdrowienia</p>
+    </div>
+  </div>
+</ng-template>
